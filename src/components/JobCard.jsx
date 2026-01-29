@@ -1,19 +1,26 @@
 import { Link } from "react-router-dom";
+import { useSavedJobs } from "../context/SavedJobsContext";
 
 export default function JobCard({ job }) {
+  const { savedJobs, toggleSavedJob } = useSavedJobs();
+  const isSaved = savedJobs.some((j) => j.id === job.id);
+
   return (
-    <div className="border rounded-lg p-5 hover:shadow-md transition bg-white">
+    <div className="border rounded-lg p-5 hover:shadow-md transition">
       <h3 className="text-lg font-semibold">{job.title}</h3>
       <p className="text-gray-600">{job.company}</p>
 
-      <div>
+      <div className="text-sm text-gray-500 mt-1">
         {job.location} • {job.type}
       </div>
 
       <div className="mt-4 flex justify-between items-center">
-        <span className="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">
-          {job.level}
-        </span>
+        <button
+          onClick={() => toggleSavedJob()}
+          className={`text-sm font-medium ${isSaved ? "text-red-600" : "text-gray-500"}`}
+        >
+          {isSaved ? "Saved ❤️" : "Save 🤍"}
+        </button>
 
         <Link
           to={`/jobs/${job.id}`}
