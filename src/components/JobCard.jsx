@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSavedJobs } from "../context/SavedJobsContext";
+import useSavedJobs from "../context/useSavedJobs";
 
 export default function JobCard({ job }) {
   const { savedJobs, toggleSavedJob } = useSavedJobs();
