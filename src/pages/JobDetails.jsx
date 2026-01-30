@@ -3,12 +3,15 @@ import { useState } from "react";
 import { jobs } from "../data/jobs";
 import Modal from "../components/Modal";
 import ApplyForm from "../components/ApplyForm";
+import useApplications from "../context/useApplications";
 
 export default function JobDetails() {
   const { id } = useParams();
   const job = jobs.find((j) => j.id === id);
   const [open, setOpen] = useState(false);
   const [applied, setApplied] = useState(false);
+  const { applyToJob, getStatus } = useApplications();
+  const status = getStatus(job.id);
 
   if (!job) return <p className="p-6">Job not found</p>;
 
@@ -20,13 +23,16 @@ export default function JobDetails() {
       <p className="mb-6">{job.description}</p>
 
       <button
-        onClick={() => setOpen(true)}
-        disabled={applied}
+        onClick={() => {
+          applyToJob(job.id);
+          setApplied(true);
+        }}
+        disabled={status}
         className={`px-6 py-3 rounded-lg text-white ${
-          applied ? "bg-gray-400" : "bg-blue-600"
+          status ? "bg-gray-400" : "bg-blue-600"
         }`}
       >
-        {applied ? "Applied ✔" : "Apply Now"}
+        {status ? `Status: ${status}` : "Apply Now"}
       </button>
 
       <Modal isOpen={open} onClose={() => setOpen(false)}>
