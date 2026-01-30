@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom";
 import useSavedJobs from "../context/useSavedJobs";
+import useApplications from "../context/useApplications";
 
 export default function JobCard({ job }) {
   const { savedJobs, toggleSavedJob } = useSavedJobs();
   const isSaved = savedJobs.some((j) => j.id === job.id);
+  const { getStatus } = useApplications();
+  const status = getStatus(job.id);
 
   return (
     <div className="border rounded-lg p-5 hover:shadow-md transition">
@@ -21,6 +24,8 @@ export default function JobCard({ job }) {
         >
           {isSaved ? "Saved ❤️" : "Save 🤍"}
         </button>
+
+        {status && <span className="text-xs text-green-600">{status}</span>}
 
         <Link
           to={`/jobs/${job.id}`}
