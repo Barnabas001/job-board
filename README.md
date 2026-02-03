@@ -1,16 +1,107 @@
-# React + Vite
+# Job Board Application (React)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern **Job Board web application** built with React, designed to simulate real-world applicant and recruiter workflows. This project focuses on clean architecture, scalable state management, and realistic UX patterns — making it **portfolio‑ready**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Concept
 
-## React Compiler
+This application allows:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Applicants** to browse jobs, view details, save jobs, and apply
+- **Recruiters** to post jobs and review applicants per job
 
-## Expanding the ESLint configuration
+It is intentionally built as an **MVP** (Minimum Viable Product) to demonstrate strong frontend fundamentals without over‑engineering.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## ✨ Features
+
+### Applicant Flow
+
+- Browse available jobs
+- View detailed job information
+- Save jobs for later
+- Apply to jobs
+- Track submitted applications
+
+### Recruiter Flow
+
+- Recruiter dashboard
+- View jobs posted
+- See applicants per job
+- Application status tags (Pending / Reviewed / Accepted)
+
+---
+
+## 🧠 Technical Highlights
+
+- React (Vite)
+- React Router v6 (nested routing)
+- Context API for global state
+- Modular, scalable folder structure
+- Controlled forms & state persistence
+- Defensive rendering to prevent runtime crashes
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   ├── JobCard.jsx
+│   ├── ApplyForm.jsx
+│   └── StatusTag.jsx
+│
+├── context/
+│   ├── AuthProvider.jsx
+│   ├── SavedJobsProvider.jsx
+│   └── ApplicationsProvider.jsx
+│
+├── pages/
+│   ├── Home.jsx
+│   ├── Jobs.jsx
+│   ├── JobDetails.jsx
+│   ├── Applications.jsx
+│   ├── RecruiterDashboard.jsx
+│   └── PostJob.jsx
+│
+├── data/
+│   └── jobs.js
+│
+├── layouts/
+│   └── DashboardLayout.jsx
+│
+├── App.jsx
+└── main.jsx
+```
+
+---
+
+## ⚠️ Known Limitations (By Design)
+
+- No backend or authentication server
+- Role‑based route protection not yet implemented
+
+These were excluded to keep the project **focused, stable, and reviewable**.
+
+---
+
+## 🔮 Future Improvements
+
+- Backend integration (Node / Firebase)
+- Real authentication & authorization
+- External job APIs (Adzuna etc.)
+- Recruiter analytics
+- Admin moderation panel
+
+---
+
+## 👨‍💻 Author
+
+Barnabas Olayinka Affonshike
+
+Built with care as a frontend engineering portfolio project.
+
+Feedback is welcome.
