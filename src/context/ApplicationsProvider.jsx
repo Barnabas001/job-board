@@ -1,23 +1,36 @@
 import ApplicationsContext from "./ApplicationsContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 
-export function ApplicationProvider({ children }) {
+export function ApplicationsProvider({ children }) {
   const [applications, setApplications] = useLocalStorage("applications", []);
 
-  const applyToJob = (jobId) => {
-    if (applications.find((app) => app.jobId === jobId)) return;
+  const applyToJob = (jobId, applicant) => {
+    if (applications.some((app) => app.jobId === jobId)) return;
 
     setApplications((prev) => [
       ...prev,
-      { jobId, status: "Applied", date: new Date().toISOString },
+      {
+        jobId,
+        applicant,
+        status: "Applied",
+        date: new Date().toISOString(),
+      },
     ]);
   };
 
-  const getStatus = (jobId) => applications.find((app) => app.jobId)?.status;
+  const getStatus = (jobId) => {
+    return applications.find((app) => app.jobId === jobId)?.status;
+  };
+
+  const updateStatus = (id, status) => {
+    setApplications((prev) =>
+      prev.map((app) => (app.id === id ? { ...app, status } : app)),
+    );
+  };
 
   return (
     <ApplicationsContext.Provider
-      value={{ applications, applyToJob, getStatus }}
+      value={{ applications, applyToJob, getStatus, updateStatus }}
     >
       {children}
     </ApplicationsContext.Provider>

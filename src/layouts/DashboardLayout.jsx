@@ -1,22 +1,38 @@
-import { Link, Outlet } from "react-router-dom";
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function DashboardLayout() {
   return (
-    <div className="min-h-screen flex">
-      <aside className="w-64 bg-gray-900 text-white p-6">
-        <h2 className="text-xl font-bold mb-6">Recruiter</h2>
+    <div className="min-h-screen bg-gray-50">
+      {/* Top Navigation */}
+      <header className="bg-white border-b">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <h1 className="text-xl font-bold">Recruiter Dashboard</h1>
 
-        <nav className="space-y-3">
-          <Link to="/dashboard" className="block hover:text-blue-400">
-            Dashboard
-          </Link>
-          <Link to="/dashboard/post-job" className="block hover:text-blue-400">
-            Post Job
-          </Link>
-        </nav>
-      </aside>
+          <nav className="flex gap-6 text-sm">
+            <NavLink
+              to="/dashboard"
+              end
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Dashboard
+            </NavLink>
 
-      <main className="flex-1 p-6 bg-gray-50">
+            <NavLink
+              to="/dashboard/post-job"
+              className={({ isActive }) =>
+                isActive ? "text-blue-600 font-semibold" : "text-gray-600"
+              }
+            >
+              Post Job
+            </NavLink>
+          </nav>
+        </div>
+      </header>
+
+      {/* Page Content */}
+      <main className="max-w-6xl mx-auto px-6 py-8">
         <Outlet />
       </main>
     </div>

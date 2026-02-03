@@ -27,6 +27,10 @@ export default function ApplyForm({ job, onSuccess }) {
     }, 600);
   };
 
+  if (!job) {
+    return <p className="p-4">Loading job details...</p>;
+  }
+
   return (
     <form onSubmit={handleSubmit}>
       <h2 className="text-xl font-semibold mb-4">Apply for {job.title}</h2>

@@ -19,3 +19,5 @@ export const jobs = [
     description: "Build and maintain modern web applications using React.",
   },
 ];
+
+export default jobs;

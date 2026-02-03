@@ -3,14 +3,17 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { SavedJobsProvider } from "./context/SavedJobsProvider";
-import { ApplicationProvider } from "./context/ApplicationsProvider";
+import { ApplicationsProvider } from "./context/ApplicationsProvider";
+import { AuthProvider } from "./context/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <SavedJobsProvider>
-      <ApplicationProvider>
-        <App />
-      </ApplicationProvider>
+      <ApplicationsProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ApplicationsProvider>
     </SavedJobsProvider>
   </React.StrictMode>,
 );
