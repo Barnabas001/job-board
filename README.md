@@ -42,6 +42,7 @@ It is intentionally built as an **MVP** (Minimum Viable Product) to demonstrate 
 - Modular, scalable folder structure
 - Controlled forms & state persistence
 - Defensive rendering to prevent runtime crashes
+- Tailwind CSS
 
 ---
 
